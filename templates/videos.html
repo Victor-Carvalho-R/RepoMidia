@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vídeos - RepoMidia</title>
+<link rel="stylesheet" href="../static/videos.css">
+{% endblock %}
+
+
+{% block base %}
+<div class="main-content">
+    <div class="page-header">
+        <h1 class="page-title">Vídeos</h1>
+        <p class="page-subtitle" id="video-count">8 vídeos</p>
+    </div>
+
+    <div class="videos-grid" id="videos-grid">
+        <!-- Vídeos serão inseridos aqui -->
+    </div>
+</div>
+
+<!-- Modal de Vídeo -->
+<div class="modal" id="video-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">×</button>
+        <div class="video-player">
+            <video id="modal-video" controls>
+                <source src="" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        <div class="modal-info">
+            <h2 class="modal-title" id="modal-title">Título do Vídeo</h2>
+            <p class="modal-meta" id="modal-meta">Duração: 5:32 • Adicionado em 06/12/2024</p>
+        </div>
+    </div>
+</div>
+
+<script src="../static/videos.js"></script>
+{% endblock %}

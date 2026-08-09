@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Upload - RepoMidia</title>
+<link rel="stylesheet" href="../static/upload.css">
+{% endblock %}
+
+
+{% block base %}
+<div class="main-content">
+    <div class="upload-container">
+        <h1 class="page-title">Upload de Mídia</h1>
+        <p class="page-subtitle">Adicione músicas, vídeos e imagens à sua biblioteca</p>
+
+        <!-- Dropzone -->
+        <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+            <div class="dropzone-icon">📁</div>
+            <div class="dropzone-text">
+                <span class="dropzone-highlight">Clique para selecionar</span> ou arraste arquivos aqui
+            </div>
+            <div class="dropzone-subtext">
+                Suporta: MP3, MP4, AVI, JPG, PNG, GIF (até 500MB)
+            </div>
+        </div>
+
+        <input type="file" id="file-input" class="file-input" accept="audio/*,video/*,image/*"
+            onchange="handleFileSelect(event)">
+
+        <!-- Preview do arquivo -->
+        <div class="file-preview" id="file-preview">
+            <div class="preview-header">
+                <h3 class="preview-title">Arquivo Selecionado</h3>
+                <button class="remove-file" onclick="removeFile()">Remover</button>
+            </div>
+            <div id="preview-content">
+                <!-- Preview será inserido aqui -->
+            </div>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div class="progress-container" id="progress-container">
+            <div class="progress-label">
+                <span>Enviando arquivo...</span>
+                <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Formulário -->
+        <form class="upload-form" id="upload-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label class="form-label" for="media-type">Tipo de Mídia</label>
+                <select class="form-select" id="media-type" onselect="showUploadType(this)" required>
+                    <option value="">Selecione o tipo</option>
+                    <option value="musica">Música</option>
+                    <option value="video">Vídeo</option>
+                    <option value="imagem">Imagem</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="media-title">Título</label>
+                <input type="text" class="form-input" id="media-title" placeholder="Digite o título" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="media-description">Descrição (opcional)</label>
+                <textarea class="form-textarea" id="media-description"
+                    placeholder="Adicione uma descrição ou notas sobre este arquivo"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
+                    Fazer Upload
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../static/upload.js"></script>
+{% endblock %}

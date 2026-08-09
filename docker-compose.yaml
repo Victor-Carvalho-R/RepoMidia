@@ -1,0 +1,13 @@
+services:
+  web-app:
+    # name: repomidia-container
+    image: repomidia:1.0
+    build: .
+    ports: 
+      - "8000:8000"
+    restart: always
+    volumes:
+      - sqlite:/app/data
+
+volumes:
+  sqlite:

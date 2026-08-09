@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Biblioteca - RepoMidia</title>
+<link rel="stylesheet" href="../static/home.css">
+{% endblock %}
+
+{% block base %}
+<div class="main-content">
+    <div class="page-header">
+        <h1 class="page-title">Biblioteca</h1>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Buscar músicas, vídeos e imagens..."
+                oninput="handleSearch(this.value)">
+        </div>
+    </div>
+
+    <!-- Seção: Músicas Recentes -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">🎵 Músicas Recentes</h2>
+            <a href="/musicas" class="view-all">Ver todas →</a>
+        </div>
+        <div class="media-grid" id="musicas-grid">
+            <!-- Cards serão inseridos aqui via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Seção: Vídeos Recentes -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">🎬 Vídeos Recentes</h2>
+            <a href="/videos" class="view-all">Ver todos →</a>
+        </div>
+        <div class="media-grid" id="videos-grid">
+            <!-- Cards serão inseridos aqui via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Seção: Imagens Recentes -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2 class="section-title">🖼️ Imagens Recentes</h2>
+            <a href="/imagens" class="view-all">Ver todas →</a>
+        </div>
+        <div class="media-grid" id="imagens-grid">
+            <!-- Cards serão inseridos aqui via JavaScript -->
+        </div>
+    </div>
+</div>
+
+<script src="../static/home.js"></script>
+{% endblock %}

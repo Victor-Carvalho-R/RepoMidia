@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/base.css">
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="/">
+            <div class="logo">
+                <h1>RepoMidia</h1>
+            </div>
+        </a>
+        <a href="/" class="nav-item active">Biblioteca</a>
+        <a href="/musicas" class="nav-item">Músicas</a>
+        <a href="/videos" class="nav-item">Vídeos</a>
+        <a href="/imagens" class="nav-item">Imagens</a>
+        <a href="/upload" class="nav-item">Upload</a>
+    </div>
+    {% block base %}
+    {% endblock %}
+</body>
+
+</html>

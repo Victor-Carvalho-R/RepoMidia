@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Imagens - RepoMidia</title>
+<link rel="stylesheet" href="../static/imagens.css">
+{% endblock %}
+
+
+{% block base %}
+<div class="main-content">
+    <div class="page-header">
+        <h1 class="page-title">Imagens</h1>
+        <p class="page-subtitle" id="image-count">15 imagens</p>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+        <!-- Imagens serão inseridas aqui -->
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateImage(-1)">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateImage(1)">›</button>
+
+    <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-image" src="" alt="">
+    </div>
+
+    <div class="lightbox-info">
+        <div class="lightbox-title" id="lightbox-title">Título da Imagem</div>
+        <div class="lightbox-meta" id="lightbox-meta">1 de 15 • Adicionado em 06/12/2024</div>
+    </div>
+</div>
+
+<script src="../static/imagens.js"></script>
+{% endblock %}
