@@ -1,4 +1,3 @@
-console.log("musicas.js carregado");
 const sidebar = document.getElementsByClassName("sidebar")[0];
 const main_content = document.getElementsByClassName("main-content")[0];
 const page_wrapper = document.createElement("div");
@@ -27,39 +26,19 @@ const musicLibrary = [
 let currentTrack = 0;
 let isPlaying = false;
 
-// Renderizar lista de músicas
-function renderMusicList() {
-    const tbody = document.getElementById('music-list');
-    tbody.innerHTML = musicLibrary.map((track, index) => `
-                <tr onclick="playTrack(${index})" class="${index === currentTrack ? 'playing' : ''}">
-                    <td>
-                        <div class="title-cell">
-                            <div class="play-icon">${index === currentTrack && isPlaying ? '🔊' : '🎵'}</div>
-                            <div class="track-info">
-                                <div class="track-title">${track.title}</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>${track.artist}</td>
-                    <td>${track.album}</td>
-                    <td class="duration-cell" style="text-align: right;">${track.duration}</td>
-                </tr>
-            `).join('');
-}
-
 // Tocar música
-function playTrack(index) {
+function playTrack(index, song_name) {
     currentTrack = index;
     isPlaying = true;
-    updatePlayer();
+    updatePlayer(song_name);
     renderMusicList();
 }
 
 // Atualizar player
-function updatePlayer() {
+function updatePlayer(song_name) {
     const track = musicLibrary[currentTrack];
-    document.getElementById('playing-title').textContent = track.title;
-    document.getElementById('playing-artist').textContent = track.artist;
+    document.getElementById('playing-title').textContent = song_name;
+    document.getElementById('playing-artist').textContent = "placeholder";
     document.getElementById('play-btn').textContent = isPlaying ? '⏸' : '▶';
 }
 
@@ -104,5 +83,4 @@ function setVolume(event) {
 document.getElementById('music-count').textContent = `${musicLibrary.length} músicas`;
 
 // Inicializar
-renderMusicList();
 updatePlayer();

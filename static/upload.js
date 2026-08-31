@@ -1,30 +1,3 @@
-let selectedFile = null;
-
-// // Submit do formulário
-// function handleSubmit(event) {
-//     event.preventDefault();
-
-//     if (!selectedFile) {
-//         alert('Selecione um arquivo primeiro');
-//         return;
-//     }
-
-//     const formData = {
-//         file: selectedFile,
-//         type: document.getElementById('media-type').value,
-//         title: document.getElementById('media-title').value,
-//         description: document.getElementById('media-description').value
-//     };
-
-//     console.log('Uploading:', formData);
-
-//     // Desabilitar botão durante upload
-//     document.getElementById('submit-btn').disabled = true;
-
-//     // Simular upload (substituir com chamada real ao backend)
-//     simulateUpload();
-// }
-
 // // Reset do formulário
 // function resetForm() {
 //     document.getElementById('upload-form').reset();

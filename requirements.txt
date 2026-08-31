@@ -1,2 +1,3 @@
 fastapi[standard]
 yt_dlp
+python-vlc

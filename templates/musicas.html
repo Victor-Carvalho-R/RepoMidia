@@ -24,7 +24,21 @@
                 </tr>
             </thead>
             <tbody id="music-list">
-                <!-- Músicas serão inseridas aqui -->
+                {% for song in songs_table[1:] %}
+                <tr data-track="{{ loop.index }}" onclick="playTrack({{ loop.index }}, '{{ song[1] }}')">
+                    <td>
+                        <div class="title-cell">
+                            <div class="play-icon">🎵</div>
+                            <div class="track-info">
+                                <div class="track-title">{{ song[1] }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>placeholder</td>
+                    <td>placeholder</td>
+                    <td class="duration-cell" style="text-align: right;">placeholder</td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

@@ -8,6 +8,7 @@ from pydantic import BaseModel
 import json
 import yt_dlp
 import sqlite3
+import vlc
 
 app = FastAPI()
 
@@ -36,23 +37,32 @@ class Musica(BaseModel):
 #--------------------------------------------
 
 @app.get("/")
-async def read_item(request: Request):
+async def get_home(request: Request):
     return templates.TemplateResponse(request=request, name="home.html")
 
 @app.get("/imagens")
-async def read_item(request: Request):
+async def get_imagens(request: Request):
     return templates.TemplateResponse(request=request, name="imagens.html")
 
 @app.get("/musicas")
-async def read_item(request: Request):
-    return templates.TemplateResponse(request=request, name="musicas.html")
+async def get_musicas(request: Request):
+    conn = sqlite3.connect("/app/data/app.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM songs")
+    songs = cursor.fetchall()
+    cursor.execute("PRAGMA table_info(songs)")
+    colunas = tuple([column_info[1] for column_info in cursor.fetchall()])
+    conn.close()
+    songs.insert(0, colunas)
+    
+    return templates.TemplateResponse(request=request, name="musicas.html", context={"songs_table": songs})
 
 @app.get("/upload")
-async def read_item(request: Request):
+async def get_upload(request: Request):
     return templates.TemplateResponse(request=request, name="upload.html")
 
 @app.get("/videos")
-async def read_item(request: Request):
+async def get_videos(request: Request):
     return templates.TemplateResponse(request=request, name="videos.html")
 
 #--------------------------------------------
